@@ -257,14 +257,14 @@ func (c *Cors) handlePreflight(ctx context.Context) {
 func (c *Cors) handleActualRequest(ctx context.Context) {
 	origin := ctx.GetHeader("Origin")
 
-	if ctx.Method() == http.MethodOptions {
-		c.logf("  Actual request no headers added: method == %s", ctx.Method())
-		//
-		ctx.StatusCode(http.StatusMethodNotAllowed)
-		ctx.StopExecution()
-		//
-		return
-	}
+	//if ctx.Method() == http.MethodOptions {
+	//	c.logf("  Actual request no headers added: method == %s", ctx.Method())
+	//	//
+	//	ctx.StatusCode(http.StatusMethodNotAllowed)
+	//	ctx.StopExecution()
+	//	//
+	//	return
+	//}
 	// Always set Vary, see https://github.com/rs/cors/issues/10
 	ctx.ResponseWriter().Header().Add("Vary", "Origin")
 	if origin == "" {
